@@ -1,0 +1,49 @@
+html
+{
+    background-color: white;
+}
+h1
+{
+    color: black;
+    font-family: 'Roboto Serif', serif;
+    font-size: 50px;
+    
+}
+h2
+{
+    color: black;
+    font-family: 'Roboto Serif', serif;
+    font-size: 25px;
+    text-decoration: underline;
+}
+h3
+{
+    color: black;
+    font-family: 'Roboto Serif', serif;
+    font-size: 20px;
+    text-decoration: underline;
+}
+p
+{
+    font-family: 'Roboto';
+}
+.p2
+{
+    color: midnightblue;
+    font-size: 1rem;
+}
+.p3
+{
+    font-size: 13px;
+    text-decoration: underline;
+}
+.p4
+{
+    font-size: 15px;
+    text-indent: 15px;
+}
+.p5
+{
+    font-size: 15px;
+    text-indent: 25px;
+}
