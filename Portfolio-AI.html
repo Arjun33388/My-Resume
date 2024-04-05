@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R Arjun - My Web Resume</title>
+  <style>
+    /* Internal CSS */
+    body {
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      scroll-padding-top: 100px; /* Scroll padding */
+      background-image: url('https://arjun33388.github.io/My-Resume/Freebie-GradientTextures-01.jpg'); /* Replace 'your-background-image.jpg' with your image file */
+      background-size: cover; /* Cover the entire viewport */
+      background-attachment: fixed; /* Make the background fixed */
+      margin: 0; /* Remove default margin */
+      margin-top: 100px;
+      margin-bottom: 120px;
+      padding: 0; /* Remove default padding */
+    }
+    
+    header {
+      background-image: linear-gradient(to right, rgb(249, 3, 212) , rgb(39, 81, 250));
+      opacity: 80%;
+      color: #000000;
+      text-align: center;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: top 0.3s ease; /* Add transition for smooth effect */
+    }
+    
+    header.hidden {
+      top: -80px; /* Hide header when scrolled */
+    }
+    
+    .profile-content {
+      display: flex;
+    }
+    
+    .profile-image {
+      flex: 0 0 50%; /* 50% width for the image */
+      padding: 20px;
+    }
+    
+    .profile-bio {
+      flex: 1; /* Remaining width for the bio */
+      padding: 20px;
+    }
+    
+    .profile-bio h2 {
+      color: #000000;
+    }
+    
+    .profile-bio p {
+      color: #000000;
+    }
+    
+
+    nav {
+      background-image: linear-gradient(to bottom, rgb(249, 3, 212) , rgb(39, 81, 250));
+      opacity: 90%;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    nav.left {
+      left: -200px;
+    }
+
+    nav.open {
+      left: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+    }
+
+    nav a:hover {
+      background-color: #5b1d56;
+    }
+
+    .card {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease; /* Add transition effect */
+    }
+    
+    .card:hover {
+      transform: scale(1.05); /* Increase scale on hover */
+    }
+    
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    form label {
+      margin-bottom: 5px;
+    }
+    
+    form input,
+    form textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #5fcaff;
+      border-radius: 5px;
+      box-sizing: border-box;
+      width: calc(100% - 22px); /* Adjusted width to account for padding */
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      display: inline-block;
+      width: calc(50% - 11px); /* Adjusted width for first name and last name */
+    }
+    
+    button[type="submit"] {
+      padding: 10px;
+      background-color: #9700b1;
+      color: #000000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #6c009a;
+    }
+    
+    footer {
+      background-image: linear-gradient(to right,white, rgb(249, 3, 212) , rgb(39, 81, 250));
+      opacity: 80%;
+      color: #000000;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: -80px; /* Initially hidden */
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      opacity: 0; /* Initially hidden */
+    }
+    
+    footer.bottom {
+      bottom: 0; /* Position at the bottom when scrolled */
+      opacity: 1; /* Show footer when at the bottom */
+    }
+    
+    footer.open {
+      opacity: 1; /* Show footer when hovered */
+    }
+    
+    .social-icons {
+      display: flex;
+    }
+    
+    .social-icons a {
+      margin: 0 10px;
+    }
+    
+    .social-icons img {
+      width: 40px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover img {
+      transform: scale(1.1);
+    }
+    
+    .contact-info {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+    
+    .contact-info p {
+      margin: 0;
+      margin-right: 25px;
+    }
+    
+    .contact-info a {
+      color: #000000;
+      text-decoration: none;
+    }
+    
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%; /* Set the width of the container to 100% */
+      margin: 20px auto; /* Set margin to center the container horizontally */
+      padding: 0 20px; /* Add padding for content spacing */
+      box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 100%; /* Set the width of the cards to 100% */
+      max-width: 800px; /* Set maximum width for larger screens */
+      margin-left: auto;
+      margin-right: auto;
+      background-image: url('https://t3.ftcdn.net/jpg/04/56/00/16/360_F_456001627_vYt7ZFjxEQ1sshme67JAXorKRPo8gsfN.jpg'); 
+      background-size: cover; /* Cover the entire card */
+      background-position: center; /* Center the background image */
+    }
+    
+
+    .card-content {
+      padding: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    h2 {
+      text-decoration: underline;
+      font-style: oblique;
+      font-weight: bold;
+      font-variant-position: super;
+      color: #000000;
+    }
+
+    p {
+      color: #000000;
+    }
+
+    ul {
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 style="font-family: 'Times New Roman', Times, serif;"><u>R Arjun - My Web Resume</u></h1>
+</header>
+
+<nav>
+  <a href="https://docs.google.com/document/d/1PGrarDAOxFXg2s3mGsoc6GtImZn7pUEhAcONOgWRhDA/edit?usp=sharing"><img src="https://resumeworded.com/assets/images/resume-guides/digital-transformation-leader.png" height="90px" width="auto"></a>
+  <a onclick="scrollToSection('profile')">Profile</a>
+  <a onclick="scrollToSection('education')">Education</a>
+  <a onclick="scrollToSection('achievements')">Achievements & Involvements</a>
+  <a onclick="scrollToSection('certifications')">Workshops & Certifications</a>
+  <a onclick="scrollToSection('skills')">Key Skills</a>
+  <a onclick="scrollToSection('interests')">Interests</a>
+  <a onclick="scrollToSection('more')">For More Information</a>
+</nav>
+
+<div id="profile" class="container">
+  <!-- Profile -->
+  <div class="card">
+    <div class="profile-content">
+      <div class="profile-image">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN4UTIkB1nEYTZWGus_GCDFbuTb3DtzS1yFiUej0-561isN83o3ONaIrU8xFSGnH4_u89ned0P3uDZKK4lQ2WJoOHeXwHKSLVdNmGGkEi56uF75JX3LdKbiPQqIypg_7F9wyoItCwpK_zXfsdyVd7dvd59pnk09GhUBu9d1SVOBfgZyzksyl-VXpEvlemBl0oW9LpRClyEvlMK5FAwEwINBA0udkF2AM5AGiy4fIRC78Xuh8FqG3LGZeU01C6zT8XFZUXUOTxHJ1QpYWoQxDzR2lu_FVDzOjc_R-A2cFBPyZxxDE5uy6JGfgTCraMPYdt7L4ZVBopuIPyejzDRv1Q9ZhqX82gCT1q2NI8k7T8UBa_DgAUP6aeWo0_WQLovTePE6djnHAXLklFsg3P0Ph7jxgco7v5xLK4I9-NMMmSwPs_lwrSYpKNCi6L0U4xpx6S7pjYtj6doxUZJBxkHr1Cgi2def6MuVZClUFNGrbWMhaispiWKoXvuzh1xepKk6un54qdSQ3AYx8tqQfp_sB1qMojK3dcufQFGoBsl9FRuuFUl7EMKBPk6mSvvv3ZdKTU0kMzBJFJztDgmssiGEX7qAzY2TJ1DZ81cR8JQEGaWsHcrY_bKlbLylfXN6FQQrcom0DwPWg5WW8n4-N07cVp7BgcCozjiBI1WqUTDV6PPs5bDEWmAdGNp2nEQlEGo-WcMwQ1a1cG-8YG3MLd3nkDTtOgJjuGCxHcuYzbdZyKC4NCmt7h21loVewJ622XnONNsKQ6T_gXBnLEj5huoK-ZUPuQBUba7KxCF1chSRYYsCDx6l9PFqKfpj9auLCrWt51O_PS9rvNvS9ZkxyCKUNEo-tVvoOUYdkjpb38lhnRPSWsbq5KXAr0B0MaxGL7FNwttBMwC7ssxS8xiyTmNo6OKzzoer=w1474-h928-s-no-gm?authuser=0" alt="Profile Picture">
+      </div>
+      <div class="profile-bio">
+        <u><h2>About me</h2></u>
+        <p>I'm proficient in English communication and soft skills, with demonstrated leadership and management abilities, coupled with strong problem-solving capabilities. Skilled in programming languages including C, C++, and Java, as well as web development using HTML, CSS and JavaScript, complemented by strategic planning expertise.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="education" class="container">
+  <!-- Education -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Education</h2>
+      <p><li><u>Trividyaa Junior College, Suchitra</u></li><br>June 2020 - May 2022<br>Completed my Pre-University education majoring in Maths, Physics, and Chemistry.<br>Academic Achievement: 95.2% (TSBIE)</p>
+      <p><li><u>Loyola Academy, Secunderabad</u></li><br>August 2022 - Ongoing<br>Currently pursuing a Bachelor of Science specializing in Computer Science and Engineering.</p>
+    </div>
+  </div>
+</div>
+
+<div id="achievements" class="container">
+  <!-- Achievements and Involvements -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Achievements and Involvements</h2>
+      <p><u><li>Class Representative</u></li><br>August 2022 - Ongoing<br>B.Sc Computer Science and Engineering Department<br>Loyola Academy, Secunderabad</p>
+      <p><u><li>Volunteer</u></li><br>December 2022<br><br>MAGIC Youth - Transnational Youth Summit 2023</p>
+      <p><u><li>Documentation Head</u></li><br>July 2023 - Ongoing<br>MAGIC Youth Core Committee - Loyola Academy</p>
+    </div>
+  </div>
+</div>
+
+<div id="certifications" class="container">
+  <!-- Workshops & Certifications -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Workshops & Certifications</h2>
+      <p><li><u>Cyber Security / Fundamentals of Cyber Security</u></li><br>10th - 12th July, 2023 - Loyola Academy, Secunderabad<br>Participated in a 3 days Practical Hands-on Workshop on CYBER SECURITY (Level - 1) conducted by the dept of B.Sc Computer Science and Engineering in association with Supraja Technologies.</p>
+      <p><li><u>IT Fundamentals / Comptia IT Fundamentals (FC0-U61)</u></li><br>December 10th, 2023 - Comptia, Udemy<br>Completed a Comptia IT Fundamentals (FC0-U61) ITF+ Course on Udemy instructed by Mike Chapple, Ph.D.</p>
+      <p><li><u>Psychology / Introduction to Psychology (NPTEL)</u></li><br>January - March, 2023 - IIT Kanpur, NPTEL, Swayam<br>Completed an Introduction to Psychology course offered by the Institute of Technology, Kanpur on NPTEL, Swayam.</p>
+      <p><li><u>Spanish / Language</u></li><br>December, 2023 - Loyola Academy, Secunderabad<br>Completed a Spanish Language course offered as a Skill Enhancement Certificate Course at Loyola Academy, Secunderabad.</p>
+    </div>
+  </div>
+</div>
+
+<div id="skills" class="container">
+  <!-- Key Skills -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Key Skills</h2>
+      <ul>
+        <li>Problem Solving</li>
+        <li>Communication</li>
+        <li>Critical Thinking</li>
+        <li>Effective Team Management and Leadership</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="interests" class="container">
+  <!-- Interests -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Interests</h2>
+      <ul>
+        <li>Automobiles</li>
+        <li>Athletics</li>
+        <li>Hypothetical Theories</li>
+        <li>Scriptures</li>
+        <li>Skill Development</li>
+        <li>Strategic Games</li>
+        <li>Technology (Artificial Intelligence and Information Technology)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="more" class="container">
+  <!-- More Data -->
+  <div class="card">
+    <div class="card-content">
+      <h2>For More Information</h2>
+      <form id="userForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+
+        <label for="query">Query:</label><br>
+        <textarea id="query" name="query" rows="4" cols="50" required></textarea><br>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/_arjun__r"><img src="https://arjun33388.github.io/My-Resume/—Pngtree—instagram icon instagram logo_3584852.png" alt="Instagram"></a>
+    <a href="https://www.facebook.com/arjun33388"><img src="https://arjun33388.github.io/My-Resume/logo-facebookpng-32204.png" alt="Facebook"></a>
+  </div>
+  <div class="contact-info">
+    <p>Contact Info: <a href="mailto:arjun33388@gmail.com">arjun33388@gmail.com</a> | Phone: <a href="tel:+917075734363">+91 70757 34363</a></p>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/-arjun--r/"><img src="https://arjun33388.github.io/My-Resume/linkedin-logo-png-1837.png" alt="LinkedIn"></a>
+    <a href="https://github.com/Arjun33388"><img src="https://arjun33388.github.io/My-Resume/512x512-logo-27170.png" alt="GitHub"></a>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll function
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // to hide the header 
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('hidden');
+    } else {
+      header.classList.remove('hidden');
+    }
+  });
+  
+  // Change position of navigation bar after scrolling
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      document.querySelector('nav').classList.remove('open');
+      document.querySelector('nav').classList.add('left');
+    } else {
+      document.querySelector('nav').classList.remove('left');
+    }
+  });
+
+  // Show navigation bar on hover when it's on the left
+  window.addEventListener('mousemove', function(event) {
+    const nav = document.querySelector('nav');
+    if (nav.classList.contains('left') && event.clientX < 20) {
+      nav.classList.add('open');
+    }
+  });
+
+  // Change position of footer bar at the end of the webpage
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('footer');
+    const moreDataCard = document.getElementById('more');
+    const moreDataCardTop = moreDataCard.getBoundingClientRect().top;
+    const viewportHeight = window.innerHeight;
+
+    if (moreDataCardTop <= viewportHeight) {
+      footer.classList.add('bottom');
+    } else {
+      footer.classList.remove('bottom', 'open');
+    }
+  });
+
+  // Show footer bar on hover when it's on the bottom 
+  window.addEventListener('mousemove', function(event) {
+    const footer = document.querySelector('footer');
+    const moreDataCard = document.getElementById('more');
+    const moreDataCardTop = moreDataCard.getBoundingClientRect().top;
+    const viewportHeight = window.innerHeight;
+
+    if (moreDataCardTop <= viewportHeight && event.clientY > (viewportHeight - 60)) {
+      footer.classList.add('open');
+    } else {
+      footer.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
