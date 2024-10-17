@@ -1,0 +1,300 @@
+				MAD PROGRAMS
+
+1.WRITE A PROGRAM TO CREATE LINEAR LAYOUT USING       
+   VIEWS  OF AN ANDROID APPLICATION.
+ Types Of Linear Layout Orientation
+There are two types of linear layout orientation:
+Vertical
+Horizontal
+As the name specified these two orientations are used to arrange there child one after the other, in a line, either vertically or horizontally. Let’s we describe these in detail.
+1.Vertical:
+In this all the child are arranged vertically in a line one after the other. In below code snippets we have specified orientation “vertical” so the childs/views of this layout are displayed vertically.
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"> 
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button1"
+        android:id="@+id/button"
+        android:background="#358a32" />
+	 <Button
+	 android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button2"
+        android:id="@+id/button2"
+        android:background="#0058b6" />
+
+
+ 
+</LinearLayout>
+
+
+
+
+
+
+OUTPUT:
+
+2. Horizontal:
+In this all the child are arranged horizontally in a line one after the other. In below code snippets we have specified orientation “horizontal” so the childs/views of this layout are displayed horizontally.
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/
+  apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"> 
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button1"
+        android:id="@+id/button"
+        android:background="#358a32" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button2"
+        android:id="@+id/button2"
+        android:background="#0058b6" />
+</LinearLayout>
+
+
+OUTPUT:
+
+
+
+2. WRITE A PROGRAM TO CREATE RELATIVE LAYOUT USING       
+   VIEWS  OF AN ANDROID APPLICATION.
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/    
+  apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="SIGN IN"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizon      
+          tal_margin"
+        android:layout_marginTop="110dp"
+        android:text="UserName:"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+
+    
+	<TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userName"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="Password:"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+
+    <EditText
+        android:id="@+id/edt_userName"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/activity_horizon
+         tal_margin"
+        android:layout_marginTop="100dp"
+        android:layout_toRightOf="@+id/userName"
+        android:hint="User Name" />
+
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edt_userName"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/password"
+        android:hint="Password" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#03B424"
+        android:text="Login"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+</RelativeLayout>
+Output:
+
+
+3. WRITE A PROGRAM TO CREATE FRAME LAYOUT USING       
+   VIEWS  OF AN ANDROID APPLICATION.
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_name"     
+<TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:text="abhiAndroid"
+        android:textSize="30sp"
+        android:textColor="#f3f3f3"
+        android:textStyle="bold" />
+</FrameLayout>
+
+
+        
+
+
+
+
+
+
+Output:
+
+
+4. WRITE A PROGRAM TO CREATE ALERT BUTTON USING       
+   VIEWS  OF AN ANDROID APPLICATION.
+XML CODE:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:gravity="center_horizontal"
+        android:text="Press The Back Button of Your Phone."
+        android:textSize="30dp"
+        android:textStyle="bold" />
+</RelativeLayout>
+
+JAVA CODE
+import android.content.DialogInterface;
+import android.os.Bundle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity
+ {
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+@Override
+    public void onBackPressed() 
+{
+        AlertDialog.Builder builder = new    
+     AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Do you want to exit ?");
+        builder.setTitle("Alert !");
+        builder.setCancelable(false);         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+            finish();
+        });
+OnClickListener method is use of DialogInterface interface.
+        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        })
+    AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+}
+
+Output:
+
+
+5. WRITE A PROGRAM TO CREATE ANALOG & DIGITAL CLOCK   
+   TO DISPLAY TIME OF AN ANDROID APPLICATION.
+
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity"> 
+<AnalogClock
+android:layout_marginTop="20dp"
+	android:layout_marginLeft="120dp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" /> 
+	<DigitalClock
+android:layout_marginLeft="140dp"
+		android:textSize="25dp"
+		android:layout_marginTop="300dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" /> 
+</RelativeLayout>
+output:
+6.write the procedure to install Android studio.
+Procedure:
+Install Android Studio on Windows
+Follow these steps to download and install Android Studio for Windows:
+Visit the Android Developers website and click on Download Android Studio.
+
+Now, open the downloaded file to install Android Studio.
+Click Next to continue installing Android Studio.
+
+Further, click Install and wait while Android Studio is being installed on your PC.
+Once done, click Finish to close the installer and start Android Studio.
+Android Studio will now ask you to import settings. Click OK to continue to set up Android Studio.
+You should use SSD storage when working with Android Studio to get better performance and faster processing. Moreover, if you want to know more about the reasons, we've already explained why SSDs are better than HDDs.
+If the installer crashes or closes with a random error code, the chances are that your PC doesn't meet the minimum system requirements. For this, you must check the below-mentioned requirements once.
+The System Requirements for Android Studio on Windows
+Your PC must meet the following requirements to run Android Studio efficiently:
+64-bit Microsoft Windows OS 8/10/11.
+1280 x 800 minimum screen resolution.
+x86_64 CPU architecture; 2nd generation Intel Core or newer; or AMD CPU with Hypervisor support.
+8GB of RAM or more.
+12GB of available disc space is required (IDE + Android SDK + Android Emulator).
+If you're not sure about your PC's specifications, do check out our guide on how to check a PC's hardware specs.
+If your PC is too old or fails to meet the above requirements, you won't be able to install the program properly. And so, it'll be a waste of time for you to continue any further with the steps.
+How to Set Up Android Studio on Windows
+While you've installed Android Studio on your Windows PC, to create a new project you'll have to configure the Setup Wizard. The Setup Wizard will help you create a development environment for your future projects.
+Follow these steps to set up Android Studio:
+In the Setup Wizard window, select the Standard option to apply the recommended settings and click Next.
+Next, select a theme you want and click Next again to verify the settings you've configured.
+On the following screen, select Accept and click Finish to apply the changes.
+
+Wait till the Setup Wizard downloads some required files. It may take somewhere around 15 to 30 minutes, depending on your network speed.
+Once the download is completed, click Finish to complete the setup process.
+
+
